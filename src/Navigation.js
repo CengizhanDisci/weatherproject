@@ -1,28 +1,23 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator, BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
-import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import CategoriesScreen from './screens/CategoriesScreen';
-import WishlistScreen from './screens/WishlistScreen';
-import ProfileScreen from './screens/ProfileScreen';
-import ProductList from './screens/ProductList';
-import ProductDetails from './screens/ProductDetails';
-import CategoryProducts from './screens/CategoryProducts';
-import LoginScreen from './screens/LoginScreen';
-import CartScreen from './screens/CartScreen';
-import AddressScreen from './screens/AddressScreen';
-import PaymentScreen from './screens/PaymentScreen';
-import CouponsScreen from './screens/CouponsScreen';
-import OrderTrackingScreen from './screens/OrderTrackingScreen';
-import { AuthProvider } from './services/AuthContext';
-import { FavoriteProvider } from './services/FavoriteContext';
-import { CartProvider } from './services/CartContext';
+import CategoriesScreen from './screens/CategoriesScreen/CategoriesScreen';
+import WishlistScreen from './screens/WishlistScreen/WishlistScreen';
+import ProfileScreen from './screens/ProfileScreen/ProfileScreen';
+import ProductList from './screens/ProductList/ProductList';
+import ProductDetails from './screens/ProductDetails/ProductDetails';
+import CategoryProducts from './screens/CategoryProducts/CategoryProducts';
+import CartScreen from './screens/CartScreen/CartScreen';
+import AddressScreen from './screens/AddressScreen/AddressScreen';
+import PaymentScreen from './screens/PaymentScreen/PaymentScreen';
+import CouponsScreen from './screens/CouponsScreen/CouponsScreen';
+import OrderTrackingScreen from './screens/OrderTrackingScreen/OrderTrackingScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-const screenOptions: StackNavigationOptions = {
+const screenOptions = {
   headerShown: false,
 };
 
@@ -68,9 +63,9 @@ const CartStack = () => (
 function MyTabs() {
   return (
     <Tab.Navigator
-      screenOptions={({ route }): BottomTabNavigationOptions => ({
+      screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
-          let iconName: string;
+          let iconName;
           if (route.name === 'Home') {
             iconName = focused ? 'home' : 'home-outline';
           } else if (route.name === 'Categories') {
@@ -97,19 +92,4 @@ function MyTabs() {
   );
 }
 
-export default function App() {
-  return (
-    <AuthProvider>
-      <FavoriteProvider>
-        <CartProvider>
-          <NavigationContainer>
-            <Stack.Navigator screenOptions={{ headerShown: false }}>
-              <Stack.Screen name="Login" component={LoginScreen} />
-              <Stack.Screen name="MainApp" component={MyTabs} />
-            </Stack.Navigator>
-          </NavigationContainer>
-        </CartProvider>
-      </FavoriteProvider>
-    </AuthProvider>
-  );
-}
+export default MyTabs;

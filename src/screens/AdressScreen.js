@@ -1,6 +1,6 @@
-// screens/AddressScreen.js
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import styles from './AddressScreen.styles';
 
 const AddressScreen = ({ navigation }) => {
   const [fullName, setFullName] = useState('');
@@ -12,9 +12,8 @@ const AddressScreen = ({ navigation }) => {
   const [state, setState] = useState('');
 
   const handleSaveAddress = () => {
-    // Zorunlu alanların kontrolü
     if (!fullName || !address) {
-      Alert.alert('Error', 'Full Name and Address are required.');
+      alert('Full Name and Address are required.');
       return;
     }
 
@@ -75,43 +74,5 @@ const AddressScreen = ({ navigation }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    backgroundColor: '#fff',
-  },
-  heading: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginVertical: 10,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
-    padding: 10,
-    marginBottom: 15,
-  },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  halfInput: {
-    width: '48%',
-  },
-  saveButton: {
-    backgroundColor: '#4CAF50',
-    padding: 15,
-    alignItems: 'center',
-    marginTop: 20,
-  },
-  saveButtonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-});
 
 export default AddressScreen;

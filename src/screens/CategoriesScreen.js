@@ -1,27 +1,28 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import styles from './CategoriesScreen.styles';
 
 const categories = [
   {
     name: 'Beauty',
     items: 104,
-    image: require('../assets/beauty.png'),
+    image: require('../../assets/beauty.png'),
   },
   {
     name: 'Fragrances',
     items: 100,
-    image: require('../assets/fragrances.png'),
+    image: require('../../assets/fragrances.png'),
   },
   {
     name: 'Furniture',
     items: 260,
-    image: require('../assets/furniture.png'),
+    image: require('../../assets/furniture.png'),
   },
   {
     name: 'Groceries',
     items: 300,
-    image: require('../assets/groceries.png'),
+    image: require('../../assets/groceries.png'),
   },
 ];
 
@@ -50,55 +51,5 @@ const CategoriesScreen = () => {
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  categoryContainer: {
-    marginVertical: 8,
-    marginHorizontal: 16,
-    borderRadius: 8,
-    overflow: 'hidden',
-    elevation: 3,
-    position: 'relative',
-  },
-  image: {
-    width: '100%',
-    height: 200,
-  },
-  overlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  },
-  textContainer: {
-    position: 'absolute',
-    bottom: 16,
-    left: 16,
-    right: 16,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#fff',
-  },
-  items: {
-    fontSize: 14,
-    color: '#fff',
-    marginBottom: 8,
-  },
-  shopNowButton: {
-    backgroundColor: '#fff',
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    borderRadius: 4,
-    alignSelf: 'flex-start',
-  },
-  shopNowText: {
-    color: '#00f',
-    fontSize: 16,
-  },
-});
 
 export default CategoriesScreen;
